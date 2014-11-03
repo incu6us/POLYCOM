@@ -4,6 +4,7 @@ import polycom.api.Constants;
 
 /**
  * Returns local directory (address book) entries
+ * 
  * @author vpryimak
  */
 public class AddrBook {
@@ -36,10 +37,9 @@ public class AddrBook {
 	 * Specifies a batch search
 	 * 
 	 * @param pattern
-	 *            - Specifies a pattern to match for the batch search
+	 *            Specifies a pattern to match for the batch search
 	 * @param count
-	 *            - Specifies the number of entries to list that match the
-	 *            pattern
+	 *            Specifies the number of entries to list that match the pattern
 	 * @return
 	 */
 	public static String batchSearch(String pattern, int count) {
@@ -62,9 +62,9 @@ public class AddrBook {
 	 * {a..z}. Requires one or two alphanumeric characters. Valid characters
 	 * are: - _ / ; @ , . \
 	 * 
-	 * 0 through 9; a through z
-	 * 
 	 * @param letter
+	 *            0 through 9; a through z
+	 *            
 	 * @return
 	 */
 	public static String letter(char letter) {
