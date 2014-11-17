@@ -34,11 +34,8 @@
 
 	<!-- This sescion tells Spring context where to look for bean classes with 
 		appropriate annotations -->
-	<context:component-scan base-package="ua.com.vobx.smpp.db.dao"></context:component-scan>
-	<context:component-scan base-package="ua.com.vobx.smpp.db.domain"></context:component-scan>
-	<context:component-scan base-package="ua.com.vobx.smpp.db.service"></context:component-scan>
-	<context:component-scan base-package="ua.com.vobx.ui.controller"></context:component-scan>
-	<context:component-scan base-package="ua.com.vobx.sami.rest"></context:component-scan>
+	<context:component-scan base-package="com.polycom.rest"></context:component-scan>
+	<context:component-scan base-package="com.polycom.ui"></context:component-scan>
 
 	<!-- Configure JDBC Connection -->
 	<bean id="dataSource"
@@ -61,7 +58,7 @@
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 <!-- 				<prop key="hibernate.show_sql">true</prop> -->
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
+<!-- 				<prop key="hibernate.hbm2ddl.auto">update</prop> -->
 				<prop key="hibernate.c3p0.min_size">5</prop>
 				<prop key="hibernate.c3p0.max_size">20</prop>
 				<prop key="hibernate.c3p0.timeout">300</prop>
@@ -75,13 +72,14 @@
 
 			</props>
 		</property>
-
+<!-- 
 		<property name="annotatedClasses">
 			<list>
 				<value>ua.com.vobx.smpp.db.domain.SmppSettings</value>
 				<value>ua.com.vobx.smpp.db.domain.User</value>
 			</list>
 		</property>
+		-->
 	</bean>
 
 	<tx:annotation-driven />
@@ -93,7 +91,7 @@
 
 
 	<!-- Security -->
-	<import resource="security.xml" />
+<!-- 	<import resource="security.xml" /> -->
 
 </beans>
 

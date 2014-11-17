@@ -31,12 +31,87 @@
 <link rel="stylesheet"
 	href='<c:url value="/static/css/control/jquery.dataTables.css"></c:url>' />
 
-<title>Test Index page</title>
+<title>Polycom Test Page</title>
 
+<script type="text/javascript">
+    var getAddrBook = function() {
+        $.ajax({
+            url: "<c:url value='/rest/getAddress/all'></c:url>",
+            type: 'GET',
+            cache: false,
+            success: function(data) {
+                $('#addrBook').html(data);
+                console.debug(html);
+            }
+        });
+    };
+    
+    var getAddrBookByName = function() {
+    	var pattern = $('#addrPattern').val();
+        $.ajax({
+            url: "<c:url value='/rest/getAddress/"+pattern+"'></c:url>",
+            type: 'GET',
+            cache: false,
+            success: function(data) {
+                $('#addrBook').html(data);
+                console.debug(html);
+            }
+        });
+    };
+
+    var getDialByDir = function() {
+    	var dirName = $('#dialDirName').val();
+        $.ajax({
+            url: "<c:url value='/rest/dial/byDirectoryName/"+dirName+"'></c:url>",
+            type: 'GET',
+            cache: false,
+            success: function(data) {
+                $('#addrBook').html(data);
+                console.debug(html);
+            }
+        });
+    };
+    
+    var getDialByPhone = function() {
+    	var dirName = $('#dialphoneNumber').val();
+        $.ajax({
+            url: "<c:url value='/rest/dial/byPhone/"+dirName+"'></c:url>",
+            type: 'GET',
+            cache: false,
+            success: function(data) {
+                $('#addrBook').html(data);
+                console.debug(html);
+            }
+        });
+    };
+</script>
 </head>
 <body>
 
-
+<textarea rows="10" cols="150" id="addrBook" readonly="readonly"></textarea>
+<br>
+	<table class="table table-hover" style="width: 600px;">
+		<tr>
+			<td><label>Get All Addressed:</label></td>
+			<td></td>
+			<td><button onclick="getAddrBook();">getAllAddrBook</button></td>
+		</tr>
+		<tr>
+			<td><label>Get Address By Pattern:</label></td>
+			<td><input type="text" id="addrPattern"/></td>
+			<td><button onclick="getAddrBookByName();">getAddrBook</button></td>
+		</tr>
+		<tr>
+			<td><label>Dial By Address In Directory:</label></td>
+			<td><input type="text" id="dialDirName"></td>
+			<td><button onclick="getDialByDir();">dialByDirectoryName</button></td>
+		</tr>
+		<tr>
+			<td><label>Dial By Address In Directory:</label></td>
+			<td><input type="text" id="dialphoneNumber"></td>
+			<td><button onclick="getDialByPhone();">dialByDirectoryName</button></td>
+		</tr>
+	</table>
 
 
 </body>
