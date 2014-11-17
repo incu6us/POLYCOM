@@ -1,0 +1,101 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/view/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- max upload size in bytes -->
+		<property name="maxUploadSize" value="20971520" /> <!-- 20MB -->
+
+		<!-- max size of file in memory (in bytes) -->
+		<property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->
+
+	</bean>
+
+
+	<!-- This sescion tells Spring context where to look for bean classes with 
+		appropriate annotations -->
+	<context:component-scan base-package="ua.com.vobx.smpp.db.dao"></context:component-scan>
+	<context:component-scan base-package="ua.com.vobx.smpp.db.domain"></context:component-scan>
+	<context:component-scan base-package="ua.com.vobx.smpp.db.service"></context:component-scan>
+	<context:component-scan base-package="ua.com.vobx.ui.controller"></context:component-scan>
+	<context:component-scan base-package="ua.com.vobx.sami.rest"></context:component-scan>
+
+	<!-- Configure JDBC Connection -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/test?autoReconnect=true&amp;useUnicode=true&amp;createDatabaseIfNotExist=true&amp;characterEncoding=utf-8" />
+		<property name="username" value="root" />
+		<property name="password" value="666666" />
+	</bean>
+
+	<!-- Configure Hibernate 4 Session Facotry -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+<!-- 				<prop key="hibernate.show_sql">true</prop> -->
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.c3p0.min_size">5</prop>
+				<prop key="hibernate.c3p0.max_size">20</prop>
+				<prop key="hibernate.c3p0.timeout">300</prop>
+				<prop key="hibernate.c3p0.max_statements">50</prop>
+				<prop key="hibernate.c3p0.idle_test_period">3000</prop>
+				<prop key="hibernate.jdbc.batch_size">20</prop>
+				<prop key="hibernate.connection.CharSet">utf8</prop>
+        		<prop key="hibernate.connection.characterEncoding">utf8</prop>
+        		<prop key="hibernate.connection.useUnicode">true</prop>
+<!-- 				<prop key="hibernate.generate_statistics">true</prop> -->
+
+			</props>
+		</property>
+
+		<property name="annotatedClasses">
+			<list>
+				<value>ua.com.vobx.smpp.db.domain.SmppSettings</value>
+				<value>ua.com.vobx.smpp.db.domain.User</value>
+			</list>
+		</property>
+	</bean>
+
+	<tx:annotation-driven />
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+
+
+	<!-- Security -->
+	<import resource="security.xml" />
+
+</beans>
+
+
+

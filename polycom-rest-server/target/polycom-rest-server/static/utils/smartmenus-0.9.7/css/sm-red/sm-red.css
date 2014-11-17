@@ -1,0 +1,320 @@
+/*
+---------------------------------------------------------------
+  Note that styles you apply to the main menu items are inherited by the sub menus items too.
+  If you'd like to avoid this, you could use child selectors (not supported by IE6) - for example:
+  .sm-red > li > a { ... } instead of .sm-red a { ... }
+---------------------------------------------------------------*/
+
+
+/* Menu box
+===================*/
+
+	.sm-red {
+		border-bottom:2px solid #ed1848;
+		background:#fff;
+	}
+	.sm-red-vertical {
+		border-right:2px solid #ed1848;
+		border-bottom:0;
+	}
+	.sm-red ul {
+		padding:8px 0;
+		background:#F6FFED;
+		-moz-border-radius:0 4px 4px 4px;
+		-webkit-border-radius:0 4px 4px 4px;
+		border-radius:0 4px 4px 4px;
+		-moz-box-shadow:0 4px 3px rgba(0,0,0,0.25);
+		-webkit-box-shadow:0 4px 3px rgba(0,0,0,0.25);
+		box-shadow:0 4px 3px rgba(0,0,0,0.25);
+	}
+	.sm-red-vertical ul,
+	.sm-red ul ul {
+		-moz-border-radius:4px;
+		-webkit-border-radius:4px;
+		border-radius:4px;
+	}
+
+
+/* Menu items
+===================*/
+
+	.sm-red a {
+		border-bottom:2px solid #fff;
+		padding:11px 20px 9px 20px;
+		color:#000;
+		font-size:16px;
+		line-height:17px;
+		font-family:Arial,sans-serif;
+		text-decoration:none;
+		-moz-border-radius:4px 4px 0 0;
+		-webkit-border-radius:4px 4px 0 0;
+		border-radius:4px 4px 0 0;
+	}
+	.sm-red a:hover, .sm-red a:focus, .sm-red a:active {
+		border-bottom-color:#ed1848;
+		background:#ed1848;
+		color:#F6FFED;
+	}
+	.sm-red a.highlighted {
+		border-bottom-color:#F6FFED !important;
+		background:#F6FFED;
+		color:#000;
+		-moz-box-shadow:0 4px 3px rgba(0,0,0,0.25);
+		-webkit-box-shadow:0 4px 3px rgba(0,0,0,0.25);
+		box-shadow:0 4px 3px rgba(0,0,0,0.25);
+	}
+	.sm-red-vertical a {
+		-moz-border-radius:4px 0 0 4px;
+		-webkit-border-radius:4px 0 0 4px;
+		border-radius:4px 0 0 4px;
+	}
+	.sm-red-vertical a:hover, .sm-red-vertical a:focus, .sm-red-vertical a:active,
+	.sm-red-vertical a.highlighted {
+		border-bottom-color:#ed1848 !important;
+		background:#ed1848;
+		color:#F6FFED;
+		-moz-box-shadow:none;
+		-webkit-box-shadow:none;
+		box-shadow:none;
+	}
+	.sm-red ul a {
+		border-bottom:0;
+		padding:10px 20px;
+		font-size:14px;
+		line-height:normal;
+		-moz-border-radius:0;
+		-webkit-border-radius:0;
+		border-radius:0;
+	}
+	.sm-red ul a:hover, .sm-red ul a:focus, .sm-red ul a:active,
+	.sm-red ul a.highlighted {
+		background:#ed1848;
+		color:#F6FFED;
+		-moz-box-shadow:none;
+		-webkit-box-shadow:none;
+		box-shadow:none;
+	}
+	/* current items - add the class manually to some item or check the "markCurrentItem" script option */
+	.sm-red a.current, .sm-red a.current:hover, .sm-red a.current:focus, .sm-red a.current:active {
+		border-bottom-color:#ed1848;
+	}
+	.sm-red-vertical a.current, .sm-red-vertical a.current:hover, .sm-red-vertical a.current:focus, .sm-red-vertical a.current:active {
+		border-right:2px solid #ed1848;
+		border-bottom-color:#fff;
+	}
+	.sm-red ul a.current, .sm-red ul a.current:hover, .sm-red ul a.current:focus, .sm-red ul a.current:active {
+		border-right:0;
+		border-bottom:0;
+		font-weight:bold;
+	}
+	.sm-red a.has-submenu {
+		padding-right:32px;
+	}
+
+
+/* Sub menu indicators
+===================*/
+
+	.sm-red a span.sub-arrow {
+		position:absolute;
+		right:17px;
+		top:50%;
+		margin-top:-3px;
+		/* we will use one-side border to create a triangle so that we don't use a real background image, of course, you can use a real image if you like too */
+		width:0;
+		height:0;
+		overflow:hidden;
+		border-top:6px solid #ed1848; /* tweak size of the arrow */
+		border-left:4px dashed transparent;
+		border-right:4px dashed transparent;
+	}
+	.sm-red a:hover span.sub-arrow, .sm-red a:focus span.sub-arrow, .sm-red a:active span.sub-arrow {
+		border-top-color:#F6FFED;
+	}
+	.sm-red a.highlighted span.sub-arrow {
+		border-top-color:#ed1848;
+	}
+	.sm-red-vertical a span.sub-arrow,
+ 	.sm-red ul a span.sub-arrow {
+		right:15px;
+		margin-top:-4px;
+		border-left:6px solid #ed1848; /* tweak size of the arrow */
+		border-top:4px dashed transparent;
+		border-bottom:4px dashed transparent;
+	}
+	.sm-red-vertical a:hover span.sub-arrow, .sm-red-vertical a:focus span.sub-arrow, .sm-red-vertical a:active span.sub-arrow,
+	.sm-red-vertical a.highlighted span.sub-arrow,
+ 	.sm-red ul a:hover span.sub-arrow, .sm-red ul a:focus span.sub-arrow, .sm-red ul a:active span.sub-arrow,
+ 	.sm-red ul a.highlighted span.sub-arrow {
+		border-left-color:#F6FFED;
+		border-top-color:transparent;
+	}
+
+
+/* Scrolling arrows containers for tall sub menus - test sub menu: "Sub test" -> "more..." in the default download package
+===================*/
+
+	.sm-red span.scroll-up, .sm-red span.scroll-down {
+		position:absolute;
+		display:none;
+		visibility:hidden;
+		overflow:hidden;
+		background:#F6FFED;
+		height:20px;
+		/* width and position will be automatically set by the script */
+	}
+	.sm-red span.scroll-up-arrow, .sm-red span.scroll-down-arrow {
+		position:absolute;
+		top:6px;
+		left:50%;
+		margin-left:-8px;
+		/* we will use one-side border to create a triangle so that we don't use a real background image, of course, you can use a real image if you like too */
+		width:0;
+		height:0;
+		overflow:hidden;
+		border-bottom:8px solid #ed1848; /* tweak size of the arrow */
+		border-left:6px dashed transparent;
+		border-right:6px dashed transparent;
+	}
+	.sm-red span.scroll-down-arrow {
+		border-top:8px solid #ed1848; /* tweak size of the arrow */
+		border-bottom:0;
+	}
+
+
+/*
+---------------------------------------------------------------
+  Responsiveness
+  These will make the sub menus collapsible when the screen width is too small.
+---------------------------------------------------------------*/
+
+
+/* decrease horizontal main menu items left/right padding to avoid wrapping */
+@media screen and (max-width: 850px) {
+	.sm-red:not(.sm-red-vertical) > li > a {
+		padding-left:12px;
+		padding-right:12px;
+	}
+	.sm-red:not(.sm-red-vertical) > li > a.has-submenu {
+		padding-right:24px;
+	}
+	.sm-red:not(.sm-red-vertical) a span.sub-arrow {
+		right:9px;
+	}
+}
+@media screen and (max-width: 720px) {
+	.sm-red:not(.sm-red-vertical) > li > a {
+		padding-left:6px;
+		padding-right:6px;
+	}
+	.sm-red:not(.sm-red-vertical) > li > a.has-submenu {
+		padding-right:18px;
+	}
+	.sm-red:not(.sm-red-vertical) a span.sub-arrow {
+		right:3px;
+	}
+}
+
+@media screen and (max-width: 640px) {
+
+	/* The following will make the sub menus collapsible for small screen devices (it's not recommended editing these) */
+	ul.sm-red{width:auto !important;}
+	ul.sm-red ul{display:none;position:static !important;top:auto !important;left:auto !important;margin-left:0 !important;margin-top:0 !important;width:auto !important;min-width:0 !important;max-width:none !important;}
+	ul.sm-red>li{float:none;}
+	ul.sm-red>li>a,ul.sm-red ul.sm-nowrap>li>a{white-space:normal;}
+	ul.sm-red iframe{display:none;}
+
+	/* Uncomment this rule to disable completely the sub menus for small screen devices */
+	/*.sm-red ul, .sm-red span.sub-arrow, .sm-red iframe {
+		display:none !important;
+	}*/
+
+
+/* Menu box
+===================*/
+
+	.sm-red {
+		border-top:2px solid #ed1848;
+		border-bottom:2px solid #ed1848;
+		border-right:0;
+	}
+	.sm-red ul {
+		border:0;
+		padding:0;
+		/* darken the background of the sub menus */
+		background:rgba(141,184,99,0.2);
+		-moz-border-radius:0 !important;
+		-webkit-border-radius:0 !important;
+		border-radius:0 !important;
+		-moz-box-shadow:none;
+		-webkit-box-shadow:none;
+		box-shadow:none;
+	}
+
+
+/* Menu items
+===================*/
+
+	.sm-red a {
+		border:0 !important;
+		padding:13px 23px !important;
+		background:transparent !important;
+		color:#000 !important;
+		-moz-border-radius:0 !important;
+		-webkit-border-radius:0 !important;
+		border-radius:0 !important;
+		-moz-box-shadow:none !important;
+		-webkit-box-shadow:none !important;
+		box-shadow:none !important;
+	}
+	.sm-red a.current {
+		font-weight:bold;
+	}
+	/* add some text indentation for the 2+ level sub menu items */
+	.sm-red ul a {
+		border-left:8px solid transparent !important;
+	}
+	.sm-red ul ul a {
+		border-left:16px solid transparent !important;
+	}
+	.sm-red ul ul ul a {
+		border-left:24px solid transparent !important;
+	}
+	.sm-red ul ul ul ul a {
+		border-left:32px solid transparent !important;
+	}
+	.sm-red ul ul ul ul ul a {
+		border-left:40px solid transparent !important;
+	}
+
+
+/* Sub menu indicators
+===================*/
+
+	.sm-red a span.sub-arrow {
+		right:auto !important;
+		margin-top:-7px !important;
+		margin-left:-16px !important;
+		border-left:9px solid #ed1848 !important; /* tweak size of the arrow */
+		border-top:6px dashed transparent !important;
+		border-bottom:6px dashed transparent !important;
+	}
+	/* Hide sub indicator when item is expanded - we enable the item link when it's expanded */
+	.sm-red a.highlighted span.sub-arrow {
+		display:none !important;
+	}
+
+
+
+
+/* Items separators
+===================*/
+
+	.sm-red li {
+		border-top:1px solid rgba(141,184,99,0.2);
+	}
+	.sm-red li:first-child {
+		border-top:0;
+	}
+
+}
