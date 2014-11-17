@@ -23,7 +23,7 @@ public class Dial {
 	 * @return
 	 */
 	public static String addressbook(String addressBookName) {
-		return "dial addressbook " + addressBookName + delimiter + "dial addressbook " + addressBookName + " ";
+		return "dial addressbook \"" + addressBookName + "\"" + delimiter + "dial addressbook \"" + addressBookName + "\" ";
 	}
 
 	/**

@@ -5,6 +5,7 @@ import polycom.api.commands.AlertUserTone;
 import polycom.api.commands.AlertVideoTone;
 import polycom.api.commands.AllRegister;
 import polycom.api.commands.AllUnregister;
+import polycom.api.commands.Dial;
 import polycom.api.net.PolycomHDXClient;
 
 public class Main {
@@ -16,7 +17,7 @@ public class Main {
 		/*
 		 * addrbook
 		 */
-		// System.out.println(telnet.sendCommand(AddrBook.all()));
+//		 System.out.println(telnet.sendCommand(AddrBook.all()));
 		// System.out.println(telnet.sendCommand(AddrBook.batch(0)));
 		// System.out.println(telnet.sendCommand(AddrBook.batchSearch("Minsk",
 		// 1)));
@@ -55,8 +56,17 @@ public class Main {
 		/*
 		 * all unregister
 		 */
-		System.out.println(telnet.sendCommand(AllUnregister.getAllUnregister()));
+//		System.out.println(telnet.sendCommand(AllUnregister.getAllUnregister()));
 
+		
+		/*
+		 * Dial
+		 */
+		System.out.println(telnet.sendCommand(Dial.addressbook("Loopback ISDN Test")));
+		
+		
+		
+		
 		telnet.disconnect();
 	}
 
