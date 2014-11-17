@@ -107,9 +107,9 @@
 			<td><button onclick="getDialByDir();">dialByDirectoryName</button></td>
 		</tr>
 		<tr>
-			<td><label>Dial By Address In Directory:</label></td>
+			<td><label>Dial By Custom Number:</label></td>
 			<td><input type="text" id="dialphoneNumber"></td>
-			<td><button onclick="getDialByPhone();">dialByDirectoryName</button></td>
+			<td><button onclick="getDialByPhone();">dialByCustomNumber</button></td>
 		</tr>
 	</table>
 
