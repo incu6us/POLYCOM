@@ -6,6 +6,9 @@ import polycom.api.commands.AlertVideoTone;
 import polycom.api.commands.AllRegister;
 import polycom.api.commands.AllUnregister;
 import polycom.api.commands.Dial;
+import polycom.api.commands.DisplayIpExt;
+import polycom.api.commands.DisplayParams;
+import polycom.api.commands.LineState;
 import polycom.api.net.PolycomHDXClient;
 
 public class Main {
@@ -17,7 +20,7 @@ public class Main {
 		/*
 		 * addrbook
 		 */
-//		 System.out.println(telnet.sendCommand(AddrBook.all()));
+		// System.out.println(telnet.sendCommand(AddrBook.all()));
 		// System.out.println(telnet.sendCommand(AddrBook.batch(0)));
 		// System.out.println(telnet.sendCommand(AddrBook.batchSearch("Minsk",
 		// 1)));
@@ -56,16 +59,22 @@ public class Main {
 		/*
 		 * all unregister
 		 */
-//		System.out.println(telnet.sendCommand(AllUnregister.getAllUnregister()));
+		// System.out.println(telnet.sendCommand(AllUnregister.getAllUnregister()));
 
-		
 		/*
 		 * Dial
 		 */
-		System.out.println(telnet.sendCommand(Dial.addressbook("Loopback ISDN Test")));
-		
-		
-		
+		// System.out.println(telnet.sendCommand(Dial.addressbook("Loopback ISDN Test")));
+
+		/*
+		 * Line state
+		 */
+		// System.out.println(telnet.sendCommand(LineState.get()));
+
+		/*
+		 * displayipisdninfo
+		 */
+		System.out.println(telnet.sendCommand(DisplayIpExt.get()));
 		
 		telnet.disconnect();
 	}
